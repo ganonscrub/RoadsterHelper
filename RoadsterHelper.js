@@ -10,7 +10,16 @@
 // ==/UserScript==
 
 $(document).ready( function(){
-	showSettings();
-	closeMoreInfo();
-	document.getElementsByName( "busLabelsToggle" )[0].click();
+	$(window).resize( function(){
+		var acc = $("#accordian");
+		if ( acc.height() > window.innerHeight ){
+			console.log( acc.height(), window.innerHeight );
+			acc.height( window.innerHeight + 20 );
+			acc.css( { overflow:"scroll" } );
+		}
+		else{
+			acc.height( 627 );
+			acc.css( { overflow:"visible" } );
+		}
+	});
 });
