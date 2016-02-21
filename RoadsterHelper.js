@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Roadster Helper
 // @namespace    ganonscrub_script
-// @version      0.2
+// @version      0.3
 // @description  Makes RoadsterRoutes slightly less bad
 // @author       ganonscrub
 // @include      *uml.edu/routes/*
@@ -34,22 +34,6 @@ function shouldShowNumbers(){
             return false;
         else
             console.error( "BIG PROBLEM IN shouldShowNumbers" );
-    }
-}
-
-function makeAccordianScrollable(){
-    var acc = $("#accordian");
-    var box = $(".content.accordian");
-    if ( window.innerHeight < 533 ){
-        //console.log( box.height(), window.innerHeight );
-        box.height( window.innerHeight );
-        box.css( { overflow:"scroll" } );
-    }
-    else{
-        //box.height( 543 );
-        box.height( acc.height() );
-        acc.width( 220 );
-        box.css( { overflow:"visible" } );
     }
 }
 
@@ -91,14 +75,8 @@ $(document).ready( function(){
     toggle.css( { "position": "absolute", "width": "auto", "margin-left": window.innerWidth / 2, "margin-top": "10px", "font-size": "16px", "font-weight": "bold", "z-index": 1, "cursor": "pointer" } );
     toggle.click( cookieToggle );
     
-    openMoreInfo();
-    closeMoreInfo();
-    
     if ( shouldShowNumbers() )
         showNumbers();
-    
-	$(window).resize( makeAccordianScrollable );
+	
     $(window).resize( bannerResize );
-    
-    setTimeout( makeAccordianScrollable, 1000 );    
 });
